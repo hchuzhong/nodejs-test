@@ -4,7 +4,7 @@ var url = require('url')
 var port = process.argv[2]
 
 if(!port){
-  console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？')
+  console.log('请指定端口号')
   process.exit(1)
 }
 
@@ -19,14 +19,14 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log('有个傻子发请求过来啦！路径（带查询参数）为：' + pathWithQuery)
+  console.log('有人发生了请求路径（带查询参数）为：' + pathWithQuery)
 
   if(path === '/'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write(`
       <link rel="stylesheet" href="./style.css">
-      <h1>你好</h1>
+      <h1>你好,这里是主页面</h1>
     `)
     response.end()
   } else if(path === '/style.css'){
@@ -43,5 +43,5 @@ var server = http.createServer(function(request, response){
 })
 
 server.listen(port)
-console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)
+console.log('监听 ' + port + ' 成功\n可以打开 http://localhost:' + port)
 
